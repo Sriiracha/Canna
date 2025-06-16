@@ -1,1 +1,54 @@
 
+<!DOCTYPE html>
+<html>
+<head>
+  <title>GreenLeaf Store</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>🌿 GreenLeaf Dispensary</h1>
+  <div id="products"></div>
+  <button onclick="checkout()">Checkout</button>
+
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
+let products = [
+  { name: "CBD Gummies", price: 20 },
+  { name: "Indica Flower", price: 35 },
+  { name: "THC Oil", price: 50 }
+];
+
+const container = document.getElementById("products");
+
+products.forEach(product => {
+  let div = document.createElement("div");
+  div.innerHTML = `${product.name} - $${product.price}`;
+  container.appendChild(div);
+});
+
+function checkout() {
+  Telegram.WebApp.sendData("checkout_confirmed");
+  Telegram.WebApp.body {
+  font-family: sans-serif;
+  padding: 20px;
+  background: #f4f4f4;
+}
+h1 {
+  color: green;
+}
+#products > div {
+  background: white;
+  padding: 10px;
+  margin: 5px 0;
+  border: 1px solid #ccc;
+}
+button {
+  margin-top: 15px;
+  padding: 10px 20px;
+  font-size: 16px;
+}
+close();
+}
